@@ -4,6 +4,7 @@ import { collection, addDoc, getFirestore, getDocs, query, where } from "firebas
 
 import Button from "../../button/button";
 import ItemList from "../itemList/itemList";
+import Form from "../../form/form";
 
 
 function Products() {
@@ -52,15 +53,9 @@ function Products() {
                 <h1>cargando</h1>
                 :
                 < div >
-        
-                    <form className="flex justify-center align-middle m-2" onSubmit={handleSubmit}>
-                        <label className="text-lg m-2" htmlFor="product-name">Nombre del producto
-                        </label>
-                        <input className="border-solid border-2 border-gray-600" type="text" name="name" onChange={handleChange} />
-                        <label className="text-lg m-2" htmlFor="product-price">Precio</label>
-                        <input className="border-solid border-2 border-gray-600" type="text" name="price" onChange={handleChange} />
-                        <Button text='Agregar' clickEvent={UploadProduct} id='submit' />
-                    </form>
+                    <div  >
+                        <Form handleChange={handleChange} handleSubmit={handleSubmit} buttonClick={UploadProduct} buttonText="agregar"/>
+                    </div>
                     <ItemList products={Productos } />
 
                 </div >
