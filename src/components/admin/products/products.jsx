@@ -5,6 +5,7 @@ import { collection, addDoc, getFirestore, getDocs, query, where } from "firebas
 
 import ItemList from "../itemList/itemList";
 import Form from "../../form/form";
+import Button from "../../button/button";
 
 
 function Products() {
@@ -12,10 +13,14 @@ function Products() {
     const [product, setProduct] = useState({ name: false, price: false });
     const {cat} = useParams ()
     const [loading, setLoading] = useState(true)
-    const [Productos, setProductos] = useState([])
+    const [Productos, setProductos] = useState([true])
     const [change, setchange] = useState(false);
 
-    
+    const [addedProduct, setAddedProduct] = useState(false)
+
+    function yes (){
+        setAddedProduct(false)
+    }
 
     const handleChange = (event) => {
         setProduct({ ...product, [event.target.name]: event.target.value });
@@ -31,6 +36,7 @@ function Products() {
         addDoc(queryCollection, product)
         .then(resp => console.log(resp))
         .then(setchange(!change))
+        .then(setAddedProduct(true))
         .catch (err => console.log (err))
     }
 
@@ -65,14 +71,20 @@ function Products() {
     return (
         <section>
                 < div >
-                    <div  >
-                        <Form handleChange={handleChange} handleSubmit={handleSubmit} buttonClick={UploadProduct} buttonText="agregar"/>
-                    </div>
-            {loading ?
-                <h1>cargando</h1>
-                :
-                    <ItemList products={Productos}  />
-                }
+                        {addedProduct
+                            ?
+                            <div>
+                            <h1>Producto agregado correctamente</h1>
+                            <Button text="continuar" clickEvent={yes}/>
+                            </div>
+                            :
+                            <Form handleChange={handleChange} handleSubmit={handleSubmit} buttonClick={UploadProduct} buttonText="agregar" />
+                        }
+                        {loading ?
+                        <h1 className="bg-red-500">cargando...</h1>
+                        :
+                            <ItemList products={Productos}  />
+                        }
                 </div >
         </section>
   )
