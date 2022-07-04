@@ -1,13 +1,15 @@
 import React from "react";
 import Item from "../item/Item";
 
-function ItemList({products}) {
+function ItemList({products, categories, type, dataBase}) {
   
 
     return (
       <div className="itemlist">
-        {
-          products.map((prod) => <Item key={prod.id} title={prod.name} price={prod.price} id={prod.id} />)  
+        { type === "Producto" ?
+          products.map((item) => <Item key={item.id} title={item.name} type={type} visible={item.visible} category={item.category} database={dataBase} description={item.description} id={item.id} categories={categories} />)  
+          :
+          categories.map((item) => <Item key={item.id} title={item.name} type={type} visible={item.visible} category={item.category} database={dataBase}  description={item.description} id={item.id} categories={categories} />)  
         }
     </div>
   )

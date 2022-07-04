@@ -9,7 +9,7 @@ function Navbar() {
     return (
         <nav className="container mx-auto bg-slate-500 m-3 p-2">
         <ul className="flex justify-evenly">
-            <Link to='/admin/categorias'><li className={isAdmin?"":"hidden" }>categorias</li></Link>
+            <Link to='/admin/categories'><li className={isAdmin?"":"hidden" }>categorias</li></Link>
             <Link to='/admin/productos'><li className={isAdmin?"":"hidden" }>productos</li></Link>
             <Link to='/'><li>carta</li></Link>
             <Link to='/reservas'><li>reservas</li></Link>
