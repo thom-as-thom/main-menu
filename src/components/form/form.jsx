@@ -11,11 +11,7 @@ function Form({ handleChange, handleSubmit, buttonClick, buttonText,  type, cate
 		console.log(event.target.value)
 		handleChange(event)
 	}
-	if (type === "producto") {
-		
-	}
-
-	
+	console.log(item)
 
 	return(
 	<form className="container mx-auto px-10 lg:flex lg:justify-center" onSubmit={handleSubmit}>
@@ -30,9 +26,9 @@ function Form({ handleChange, handleSubmit, buttonClick, buttonText,  type, cate
 					:
 					<>
 						<input className="border-solid border-2 border-gray-600 h-7 m-2" defaultValue={item.description} type="text" name="description" onChange={handleChange} />
-					
+						<input className="border-solid border-2 border-gray-600 h-7 m-2" defaultValue={item.price} type="number" name="price" onChange={handleChange}/>
 						<label htmlFor="categories">Categoria</label>
-							<select id="categories" name="category" value={item.categoy} onChange={handleChange}>
+							<select id="categories" name="category" defaultValue={"sin definir"} value={item.category} onChange={handleChange}>
 								{
 							categories.map((cat) => (<option key={cat.id} value={cat.name} id={cat.id} default>{cat.name} </option>))  
 							}
@@ -42,8 +38,8 @@ function Form({ handleChange, handleSubmit, buttonClick, buttonText,  type, cate
 				<div className="grid grid-cols-1">
 					<label className="hidden" htmlFor="visible">  </label>
 							<fieldset onChange={onChange}>
-									<input type="radio" name="visible" value="true" id="true" defaultChecked={checked === true} />visible
-									<input type="radio" name="visible" value="false" id="true" defaultChecked={checked === false} />no visible
+									<input type="radio" name="visible" value="true" id="true" defaultChecked={checked === "true"} />visible
+									<input type="radio" name="visible" value="false" id="false" defaultChecked={checked === "false"} />no visible
 							</fieldset>
 				</div>
 			<Button text={buttonText} clickEvent={buttonClick} id='submit' />

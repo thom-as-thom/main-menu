@@ -8,7 +8,7 @@ import ItemList from "../admin/itemList/itemList"
 
 function Panel({type, dataBase}) {
 
-    const [item, setItem] = useState({ name: "nombre", description: "descripcion", visible: true, category: "sin definir" });
+    const [item, setItem] = useState({ name: "nombre", description: "descripcion", visible: "true", category: "sin definir", price:0 });
     const {cat} = useParams ()
     const [loading, setLoading] = useState(true)
     const [Productos, setProductos] = useState([true])
@@ -22,6 +22,7 @@ function Panel({type, dataBase}) {
 
     const handleChange = (event) => {
         setItem({ ...item, [event.target.name]: event.target.value });
+        console.log(item)
     }
 
     const handleSubmit = (event) => {
@@ -34,7 +35,8 @@ function Panel({type, dataBase}) {
         addDoc(queryCollection, item)
         .then(setchange(!change))
         .then(setAddedItem(true))
-        .catch (err => console.log (err))
+        .catch(err => console.log(err))
+        .finally(setItem({ name: "nombre", description: "descripcion", visible: true, category: "sin definir", price:0 }))
     }
 
     useEffect(()=>{
