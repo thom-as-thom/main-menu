@@ -13,26 +13,14 @@ function Item({ title, description, id, visible, category, categories, database,
     function onEdit() {
         setEdit(!edit)
     }
-    const [Item, setItem] = useState({key: id, name: title, description: description, id:id, visible:visible, category:category });
+    const [Item, setItem] = useState({key: id, name: title, description: description, id:id, visible:visible, category:category, price:price });
     
     const handleChange = (event) => {
         setItem({ ...Item, [event.target.name]: event.target.value });
-        if (Item.name === undefined) {
-            setItem({...Item, name: "" })
-        }
-         if (Item.description === undefined) {
-            setItem({...Item,  description: "" })
-        }
-         if (Item.visible === undefined) {
-            setItem({...Item, visible: "false" })
-         }
-         if (Item.category === undefined) {
-            setItem({...Item, category: "sin definir" })
-        }
         console.log(Item)
     }
 
-   
+
     const handleSubmit = (event) => {
         event.preventDefault()
     }
@@ -45,7 +33,8 @@ function Item({ title, description, id, visible, category, categories, database,
             "name": Item.name,
             "description": Item.description,
             "visible": Item.visible,
-            "category": Item.category
+            "category": Item.category,
+            "price": Item.price
             
         })
             
@@ -79,9 +68,11 @@ function Item({ title, description, id, visible, category, categories, database,
                             <summary>
                                 <div className="grid grid-cols-3">
                                     <h1>{Item.name}</h1>
-                                    <p>{price}</p>
-                                    {category ?
+                                    {type ===  "Producto" ?
+                                        <>
+                                        <p>{Item.price}</p>
                                         <p>{Item.category}</p>
+                                        </>
                                         :
                                         <></>}
                                     <Button text={"editar"} clickEvent={onEdit}></Button>

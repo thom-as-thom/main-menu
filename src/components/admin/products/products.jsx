@@ -9,7 +9,7 @@ function Products() {
 
     
     return (
-       <Panel type="Producto" dataBase="products"/>
+        <Panel type="Producto" dataBase="products"/>
 )
 }
 

@@ -21,11 +21,11 @@ function Form({ handleChange, handleSubmit, buttonClick, buttonText,  type, cate
 				<input className="border-solid border-2 border-gray-600 h-7 m-2" defaultValue={item.name} type="text" name="name" onChange={handleChange} />
 			<label className="text-lg m-2" htmlFor="product-price">Descripcion</label>
 				{type === "Categoria" ?
-					<textarea className="border-solid border-2 border-gray-600 h-7 m-2" defaultValue={item.description} name="description" onChange={handleChange} rows="1" cols="16">
-					</textarea>
+						<input className="border-solid border-2 border-gray-600 h-7 m-2" defaultValue={item.description} type="text" name="description" onChange={handleChange} />
 					:
 					<>
-						<input className="border-solid border-2 border-gray-600 h-7 m-2" defaultValue={item.description} type="text" name="description" onChange={handleChange} />
+					<textarea className="border-solid border-2 border-gray-600 h-7 m-2" defaultValue={item.description} name="description" onChange={handleChange} rows="1" cols="16">
+					</textarea>
 						<input className="border-solid border-2 border-gray-600 h-7 m-2" defaultValue={item.price} type="number" name="price" onChange={handleChange}/>
 						<label htmlFor="categories">Categoria</label>
 							<select id="categories" name="category" defaultValue={"sin definir"} value={item.category} onChange={handleChange}>
