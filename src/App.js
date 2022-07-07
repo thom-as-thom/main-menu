@@ -4,6 +4,7 @@ import './App.css';
 import Admin from './components/admin/admin';
 import Categories from './components/admin/categories/categories';
 import Products from './components/admin/products/products';
+import Menu from './components/menu/menu';
 import Navbar from './components/navBar/navbar';
 
 
@@ -13,6 +14,9 @@ function App() {
 		<BrowserRouter>
 		<Navbar />
 		<Routes>
+			<Route path='/' element={
+			<Menu/>
+			}/>
 			<Route path='/admin' element={
 			<Admin/>
 			}>
